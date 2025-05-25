@@ -159,3 +159,27 @@ textarea.editable {
   overflow: hidden;
   max-height: calc(1.4em * 5); /* 5 lines, matches your line-height */
 }
+
+.theme-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.theme-buttons button {
+  font-family: inherit;
+  background: transparent;
+  border: 1px dotted #999;
+  color: inherit;
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.theme-buttons button:hover {
+  background: #eee;
+  color: #000;
+}

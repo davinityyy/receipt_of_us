@@ -1,6 +1,3 @@
-// These functions can stay if planned to re-use them later,
-// but right now they should not be called or auto-run.
-
 function renderHeader(data) {
   document.querySelector('.receipt-header').innerHTML = `
     <div>${data.title}</div>
@@ -73,7 +70,7 @@ function enforceLineLimit(el, maxLines = 5) {
     dummy.style.width = el.offsetWidth + 'px';
     dummy.textContent = el.value;
     document.body.appendChild(dummy);
-
+    
     const approxLines = Math.ceil(
       dummy.offsetHeight / parseFloat(getComputedStyle(el).lineHeight)
     );
@@ -107,14 +104,37 @@ const receiptInfo = document.querySelector('.receipt-info');
 addLineBtn.addEventListener('click', () => {
   const newLine = document.createElement('textarea');
   newLine.className = 'editable receipt-line-block';
-  newLine.placeholder = '[NEW LINE ITEM]';
+  newLine.placeholder = '[LIST ITEM...]';
   newLine.rows = 1;
   newLine.required = true;
 
-  newLine.addEventListener('input', () => autoResize(newLine));
+  // First, append to DOM
+  receiptInfo.appendChild(newLine);
+
+  // THEN run the logic (after it's actually in the layout)
   autoResize(newLine);
   enforceLineLimit(newLine, 5);
 
-  receiptInfo.appendChild(newLine);
+  // Focus afterward so the jump doesn’t interfere
   newLine.focus();
+});
+
+const themeButtons = document.querySelectorAll('[data-theme]');
+const linkTag = document.querySelector('link[rel="stylesheet"][href*="styles.css"]');
+
+themeButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const selectedTheme = button.dataset.theme;
+
+    // Clear all additional themes first
+    document.querySelectorAll('link[data-theme-style]').forEach(link => link.remove());
+
+    if (selectedTheme !== 'default') {
+      const themeLink = document.createElement('link');
+      themeLink.rel = 'stylesheet';
+      themeLink.href = `themes/${selectedTheme}.css`;
+      themeLink.setAttribute('data-theme-style', '');
+      document.head.appendChild(themeLink);
+    }
+  });
 });
