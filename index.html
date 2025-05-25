@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Receipt of Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>receipt of us</h1>
+
+  <main>
+    <div class="receipt">
+<div class="receipt-header">
+  <div class="name-pair">
+    <input class="editable name" id="name-left" placeholder="NAME" required />
+    <span>&</span>
+    <input class="editable name" id="name-right" placeholder="NAME" required />
+  </div>
+  <input class="editable" placeholder="[LOCATION]" required />
+</div>
+
+<div class="receipt-line"></div>
+
+<div class="receipt-meta">
+  <div id="date-field"></div>
+  <div id="time-field"></div>
+</div>
+
+
+<div class="receipt-line"></div>
+
+<div class="receipt-info">
+  <textarea class="editable receipt-line-block" rows="1" placeholder="CHARGED – LEFT ON READ (3 DAYS)"></textarea>
+  <textarea class="editable receipt-line-block" rows="1" placeholder="REDEEMED – STEAM GIFT"></textarea>
+  <textarea class="editable receipt-line-block" rows="1" placeholder="PAID – UNREQUITED COMMITMENT"></textarea>
+</div>
+
+<div class="receipt-line with-plus">
+  <button id="add-line-btn" title="Add new line">+</button>
+</div>
+
+<div class="subtotal">
+    <div>Subtotal: $</div>
+    <div>TAX:   $0.00</div>
+    <div>TOTAL:  $0.00</div>
+</div>
+
+<br>
+
+<div class="thankyou">
+    <div>Please come again</div>
+    <div>Thank you</div>
+</div>
+  </main>
+
+  <script src="script.js" type="module"></script>
+</body>
+
+</html>
